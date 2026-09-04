@@ -12,3 +12,4 @@ tiktoken==0.13.0
 faiss-cpu==1.15.0
 python-magic==0.4.27
 openai==2.51.0
+beautifulsoup4==4.13.5
