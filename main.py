@@ -3,7 +3,8 @@ import pickle
 import time
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.document_loaders import UnstructuredURLLoader
+# from langchain_community.document_loaders import UnstructuredURLLoader
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -20,7 +21,8 @@ urls=[]
 
 for i in range(3):
     url=st.sidebar.text_input(f"URL {i+1}")
-    urls.append(url)
+    if url:
+        urls.append(url)
 
 process_url_clicked=st.sidebar.button("Process URLs")
 # file_path="../notebooks/vector_index/index.pkl"
@@ -35,7 +37,7 @@ embeddings = GoogleGenerativeAIEmbeddings(
 
 if process_url_clicked:
     #load data
-    loader=UnstructuredURLLoader(urls=urls)
+    loader= WebBaseLoader(urls)
     main_placeholder.text("Data Loading...Started...✅✅✅")
     data=loader.load()
     
