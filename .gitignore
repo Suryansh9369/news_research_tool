@@ -219,3 +219,6 @@ __marimo__/
 
 # vscode settings
 .vscode/
+
+#vector index
+vector_index/
